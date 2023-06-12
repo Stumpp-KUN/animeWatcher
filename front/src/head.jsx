@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import NewsComponent from './mainPage.jsx';
 import './styles.css';
 
 function YourComponent() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const openModal = () => {
     setModalOpen(true);
@@ -12,13 +14,12 @@ function YourComponent() {
     setModalOpen(false);
   };
 
-  const [isPasswordVisible, setPasswordVisible] = useState(false);
-
-const togglePasswordVisibility = () => {
-  setPasswordVisible((prevState) => !prevState);
-};
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prevState) => !prevState);
+  };
 
   return (
+    <div>
     <div className="vidj">
       <div className="imagePlace">
         <p>AnimeWatcher</p>
@@ -40,7 +41,7 @@ const togglePasswordVisibility = () => {
         </button>
 
         {isModalOpen && (
-          <div id="modal" className="modal">
+          <div className="modal">
             <div className="modal-content">
               <span className="close" onClick={closeModal}>
                 &times;
@@ -52,7 +53,7 @@ const togglePasswordVisibility = () => {
                 <div className="password-container">
                   <div className="custom-input">
                     <input
-                      type={isPasswordVisible ? "text" : "password"}
+                      type={isPasswordVisible ? 'text' : 'password'}
                       placeholder="Password"
                       className="pas-input"
                       id="password-input"
@@ -62,9 +63,8 @@ const togglePasswordVisibility = () => {
                       onClick={togglePasswordVisibility}
                     >
                       <img
-                        src={isPasswordVisible ? "open-eye.png" : "close-eye.png"}
-                        id="password-toggle-img"
-                        style={{ width: "20px", height: "20px" }}
+                        src={isPasswordVisible ? 'open-eye.png' : 'close-eye.png'}
+                        style={{ width: '20px', height: '20px' }}
                         alt=""
                       />
                     </span>
@@ -86,6 +86,8 @@ const togglePasswordVisibility = () => {
           Sign up
         </button>
       </div>
+    </div>
+    <NewsComponent/>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 body{
-    background-color: aliceblue;
+    background-color: #85837e;
 }
 
 .vidj{
@@ -28,20 +28,42 @@ body{
 
 .vid{
     font-size: 17px;
-    color: darkcyan;
+    color: blue;
     padding-left: 40px;
     text-decoration: none;
     outline: none;
 }
 
-.horizontal-line {
-  border: none;
-  border-top: 1px solid gray;
-  margin: 15px 0;
+.mainPage{
+  display: flex;
+  flex-direction: row;
 }
 
+.mainImage{
+  padding-top: 20px;
+  padding-left: 850px;
+  width: 1000px;
+}
+
+.animeTitle {
+  font-weight: bold;
+}
+
+.animeDescription {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+
+.popularAnime {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .modal {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -169,6 +191,7 @@ body{
   touch-action: manipulation;
   vertical-align: baseline;
   white-space: nowrap;
+  margin-right: 20px;
 }
 
 .button-7:hover,
