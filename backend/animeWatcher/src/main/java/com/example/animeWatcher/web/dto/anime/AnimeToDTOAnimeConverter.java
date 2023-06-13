@@ -19,4 +19,9 @@ public class AnimeToDTOAnimeConverter {
         Anime anime=modelMapper.map(dto,Anime.class);
         return anime;
     }
+
+    public AnimeDTOReadDescription convertAnimeToReadDtoDescription(Anime entity){
+        AnimeDTOReadDescription dto = modelMapper.map(entity, AnimeDTOReadDescription.class);
+        return dto;
+    }
 }

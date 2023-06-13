@@ -45,6 +45,11 @@ body{
   width: 1000px;
 }
 
+.animeWatcher{
+  text-decoration: none;
+  color: black;
+}
+
 .animeTitle {
   text-decoration: none;
   font-weight: bold;
@@ -298,3 +303,10 @@ body{
 .animeDislikes{
   color: red;
 }
+
+.top{
+  float: inherit;
+  padding-left: 55px;
+  color: darkblue;
+}
+
