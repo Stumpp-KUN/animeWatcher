@@ -25,6 +25,9 @@ function YourComponent() {
         <p>AnimeWatcher</p>
       </div>
       <div className="vidjets">
+      <a href="#" className="vid">
+          Anime
+        </a>
         <a href="#" className="vid">
           States
         </a>
@@ -33,6 +36,9 @@ function YourComponent() {
         </a>
         <a href="#" className="vid">
           Receives
+        </a>
+        <a href="#" className="vid">
+          Contacts
         </a>
       </div>
       <div className="auth">

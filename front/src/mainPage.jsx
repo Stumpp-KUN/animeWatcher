@@ -19,12 +19,17 @@ function NewsComponent() {
                   ) : (
           <div className="popularAnime">
             {animeData.map(anime => (
-              <div key={anime.title}>
-                <h2 className="animeTitle">{anime.title}</h2>
+              <div key={anime.title} className="animeIcon">
+                <a href='#' className="animeTitle">{anime.title}</a>
                 <p className="animeDescription">{anime.description}</p>
-                <p>Likes: {anime.likes}</p>
-                <p>Dislikes: {anime.dislikes}</p>
+                <p className='animeLikes'>Likes: {anime.likes}</p>
+                <p className='animeDislikes'>Dislikes: {anime.dislikes}</p>
+                <div className="likes-dislikes-line">
+                    <div className="likes" style={{ width: `${anime.likes / (anime.likes+anime.dislikes)*100}%` }}></div>
+                    <div className="dislikes" style={{ width: `${anime.dislikes / (anime.likes+anime.dislikes)*100}%` }}></div>
               </div>
+              </div>
+
             ))}
           </div>
         )}
