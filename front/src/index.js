@@ -5,6 +5,7 @@ import './styles.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AnimePage from './animePage.jsx';
 import Animes from './animes.jsx';
+import States from './states.jsx';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Route exact path="/" component={YourComponent} />
       <Route path="/anime/:id" component={AnimePage} />
       <Route path="/animes" component={Animes}/>
+      <Route path="/states" component={States}/>
     </Switch>
   </Router>,
   rootElement

@@ -1,6 +1,6 @@
 package com.example.animeWatcher.web.facade;
 
-import com.example.animeWatcher.service.StateService;
+import com.example.animeWatcher.web.service.StateService;
 import com.example.animeWatcher.web.dto.state.StateDTORead;
 import com.example.animeWatcher.web.dto.state.StateToDTOStateConverter;
 import lombok.RequiredArgsConstructor;

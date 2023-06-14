@@ -10,6 +10,13 @@ body, html {
     width: 100%;
     padding-top: 30px;
   }
+
+  .containerA {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    padding-top: 30px;
+  }
   
   .background {
     position: absolute;
@@ -23,6 +30,24 @@ body, html {
     margin: 0 20%;
     height: 100%;
     background-color: #fff; 
+  }
+
+  .stateContent{
+      margin: 0 20%;
+      height: 100%;
+      background-color: #fff; 
+  }
+
+  .stateName{
+    color: blue;
+    padding-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .stateDesc{
+    margin-left: 40px;
+    margin-right: 20px;
   }
   
   .container {
@@ -69,3 +94,39 @@ body, html {
   .description{
     padding-top: 50px;
   }
+
+  .likes-dislikes-line{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .animeInfo{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .animeDescription{
+    font-size: 18px;
+  }
+
+  .search {
+    margin-bottom: 20px;
+    margin-left: 380px;
+  }
+  
+  .search input {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+  }
+  

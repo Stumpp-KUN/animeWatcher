@@ -2,8 +2,8 @@ package com.example.animeWatcher.web.facade;
 
 import com.example.animeWatcher.model.Anime;
 import com.example.animeWatcher.model.Description;
-import com.example.animeWatcher.service.AnimeService;
-import com.example.animeWatcher.service.DescriptionService;
+import com.example.animeWatcher.web.service.AnimeService;
+import com.example.animeWatcher.web.service.DescriptionService;
 import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.anime.AnimeDTOReadDescription;
 import com.example.animeWatcher.web.dto.anime.AnimeToDTOAnimeConverter;

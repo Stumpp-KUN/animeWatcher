@@ -1,4 +1,4 @@
-package com.example.animeWatcher.service;
+package com.example.animeWatcher.web.service;
 
 import com.example.animeWatcher.model.State;
 import com.example.animeWatcher.repository.StateRepository;

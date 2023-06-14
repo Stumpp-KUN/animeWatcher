@@ -36,7 +36,7 @@ function YourComponent() {
             <Link to="/animes" className="vid">
               Anime
             </Link>
-            <Link to="#" className="vid">
+            <Link to="/states" className="vid">
               States
             </Link>
             <Link to="#" className="vid">

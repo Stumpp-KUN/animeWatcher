@@ -16,6 +16,7 @@ public class State {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+    @Column(length = 5000)
     private String description;
     @Lob
     private byte[] photo;
