@@ -18,6 +18,4 @@ public class Anime {
     private String videoUrl;
     private int likes;
     private int dislikes;
-    @OneToOne
-    private Description descriptionObject;
 }

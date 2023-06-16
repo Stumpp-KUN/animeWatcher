@@ -1,0 +1,41 @@
+.con {
+    position: relative;
+    height: 680px;
+    width: 100%;
+    padding-top: 180px;
+    background-image: url("/public/animeIcons/land.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center; 
+    padding-bottom: 15px;
+  }
+
+  .back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+  }
+
+  .cont {
+    margin: 0 20%;
+    height: 70%;
+    background-color: #fff; 
+  }
+
+  .contact {
+    text-align: center;
+    padding-top: 50px;
+    color: blue;
+    font-size: 35px;
+  }
+
+  .line{
+    border: 1px solid black;
+  }
+
+  .types{
+    margin-top: 20px;
+    color:rgb(65, 65, 156);
+  }

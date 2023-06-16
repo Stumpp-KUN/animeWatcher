@@ -39,13 +39,13 @@ function YourComponent() {
             <Link to="/states" className="vid">
               States
             </Link>
-            <Link to="#" className="vid">
+            <Link to="/users" className="vid">
               Users
             </Link>
-            <Link to="#" className="vid">
+            <Link to="/receives" className="vid">
               Receives
             </Link>
-            <Link to="#" className="vid">
+            <Link to="/contact" className="vid">
               Contacts
             </Link>
           </div>

@@ -10,7 +10,6 @@ const States = () => {
         fetch('http://localhost:8080/api/v1/states/')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setStateData(data);
             })
             .catch((error) => console.log(error));
@@ -41,6 +40,7 @@ const States = () => {
                     <p className="stateDesc">
                       <AnimeDescription longDescription={state.description} />
                     </p>
+                    <p className='authrNick'>{state.author.nickname}</p>
                   </div>
                 </div>
               ))

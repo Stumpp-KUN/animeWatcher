@@ -9,6 +9,8 @@ body, html {
     height: 100vh;
     width: 100%;
     padding-top: 30px;
+    background-color: #B0B0B0;
+    padding-bottom: 20px;
   }
 
   .containerA {
@@ -16,6 +18,8 @@ body, html {
     height: 450px;
     width: 100%;
     padding-top: 30px;
+    background-color: #B0B0B0;
+    padding-bottom: 20px;
   }
   
   .background {
@@ -130,3 +134,29 @@ body, html {
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
   }
   
+  .pagination{
+    padding-bottom: 30px;
+    padding-top: 20px;
+    margin-right: 400px;
+  }
+
+  .pagination button {
+    width: 200px;
+    height: 50px;
+    float: right;
+  }
+
+  .numPage{
+    padding-top: 20px;
+    padding-left: 420px;
+    font-size: 20px;
+  }
+
+  .authrNick{
+    position: absolute;
+    bottom: 0;
+    font-size: 20px;
+    color: black;
+    padding-left: 1000px;
+    padding-bottom: 80px;
+  }

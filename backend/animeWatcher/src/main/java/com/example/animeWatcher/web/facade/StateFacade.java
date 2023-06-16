@@ -3,6 +3,7 @@ package com.example.animeWatcher.web.facade;
 import com.example.animeWatcher.web.service.StateService;
 import com.example.animeWatcher.web.dto.state.StateDTORead;
 import com.example.animeWatcher.web.dto.state.StateToDTOStateConverter;
+import com.example.animeWatcher.web.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StateFacade {
     private final StateService stateService;
+    private final UserService userService;
     private final StateToDTOStateConverter stateToDTOStateConverter;
 
     public StateDTORead getState(Long id){

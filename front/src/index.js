@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AnimePage from './animePage.jsx';
 import Animes from './animes.jsx';
 import States from './states.jsx';
+import User from './userPage.jsx';
+import Contact from './contacts.jsx';
+import Receive from './receive.jsx';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
@@ -15,6 +18,9 @@ ReactDOM.render(
       <Route path="/anime/:id" component={AnimePage} />
       <Route path="/animes" component={Animes}/>
       <Route path="/states" component={States}/>
+      <Route path="/users" component={User}/>
+      <Route path="/contact" component={Contact}/>
+      <Route path="/receives" component={Receive}/> 
     </Switch>
   </Router>,
   rootElement

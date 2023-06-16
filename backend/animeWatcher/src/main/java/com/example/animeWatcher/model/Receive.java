@@ -4,23 +4,22 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
-@Table
 @NoArgsConstructor
-public class State {
+@Table
+public class Receive {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String name;
-    @Column(length = 5000)
-    private String description;
-    @Lob
-    private byte[] photo;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private User author;
+    private User receiver;
+    @Column(length = 5000)
+    private String description;
+    private Boolean isLike;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "anime_id")
+    private Anime anime;
 }

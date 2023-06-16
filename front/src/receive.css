@@ -1,0 +1,43 @@
+.states{
+    padding: 10px;
+  }
+
+  .stateName{
+    text-align: center;
+  }
+
+  .stateAuthor{
+    text-align: left;
+    font-style: italic;
+    font-weight: lighter;
+    color: gray;
+    margin-bottom: 50px;
+  }
+
+  .stateLike{
+    font-size: 30px;
+    color:darkorchid;
+  }
+
+  .conta{
+    background-color: #B0B0B0;
+    padding-top: 40px;
+  }
+  
+  .stateAnimeDescription{
+    font-size: 30px;
+    color:  chartreuse;
+  }
+
+  .stateDescription{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .conta{
+    padding-bottom: 20px;
+  }
+
+  .numPage{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }

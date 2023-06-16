@@ -75,6 +75,9 @@ body{
   padding-top: 30px;
 }
 
+.vid:hover{
+  color: black;
+}
 
 .modal {
   display: block;

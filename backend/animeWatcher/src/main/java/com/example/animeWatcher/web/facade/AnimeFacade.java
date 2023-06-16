@@ -8,6 +8,8 @@ import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.anime.AnimeDTOReadDescription;
 import com.example.animeWatcher.web.dto.anime.AnimeToDTOAnimeConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -29,14 +31,16 @@ public class AnimeFacade {
                 .sorted(Comparator.comparingInt(Anime::getLikes).reversed())
                 .forEach(anime -> animes.add(animeToDTOAnimeConverter.convertAnimeToReadDto(anime)));
 
-        if(animes.size()>5) animes.subList(0,5);
+        if(animes.size()>5){
+            for(int i=animes.size()-1;i>=5;i--)
+                animes.remove(i);
+        }
         return animes;
     }
 
-    public List<AnimeDTORead> getAllAnimes(){
-        List<AnimeDTORead> animes=new ArrayList<>();
-        animeService.getRandomAnimes().stream().forEach(n->animes.add(animeToDTOAnimeConverter.convertAnimeToReadDto(n)));
-        return animes;
+    public Page<AnimeDTORead> getAllAnimes(Pageable pageable) {
+        Page<Anime> animePage = animeService.getAllAnimes(pageable);
+        return animePage.map(animeToDTOAnimeConverter::convertAnimeToReadDto);
     }
 
     public AnimeDTOReadDescription getAnime(Long id){

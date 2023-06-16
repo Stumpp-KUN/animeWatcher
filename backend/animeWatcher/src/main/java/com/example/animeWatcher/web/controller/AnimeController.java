@@ -1,11 +1,17 @@
 package com.example.animeWatcher.web.controller;
 
+import com.example.animeWatcher.security.SecurityService;
 import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.anime.AnimeDTOReadDescription;
 import com.example.animeWatcher.web.facade.AnimeFacade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +23,7 @@ import java.util.List;
 public class AnimeController {
 
     private final AnimeFacade animeFacade;
+    private final SecurityService securityService;
 
     @GetMapping("/")
     public ResponseEntity<List<AnimeDTORead>> getAnimes(){
@@ -29,7 +36,18 @@ public class AnimeController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<AnimeDTORead>> getAllAnimes(){
-        return new ResponseEntity<>(animeFacade.getAllAnimes(),HttpStatus.CREATED);
+    public ResponseEntity<Page<AnimeDTORead>> getAllAnimes(
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam String name,
+            @RequestParam String password
+    ) {
+        securityService.autoLogin(name,password);
+        Pageable pageable = PageRequest.of(page, size);
+        Page<AnimeDTORead> animePage = animeFacade.getAllAnimes(pageable);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("TotalPages", String.valueOf(animePage.getTotalPages()));
+        return ResponseEntity.ok().headers(headers).body(animePage);
     }
+
 }

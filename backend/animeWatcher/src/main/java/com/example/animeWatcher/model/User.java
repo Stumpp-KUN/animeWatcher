@@ -1,9 +1,11 @@
 package com.example.animeWatcher.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -17,6 +19,11 @@ public class User {
     private String surname;
     private String nickname;
     private String password;
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<State> articles;
+    @Transient
+    private String passwordConfirm;
+    @ManyToMany
+    private Set<Role> roles;
 }
