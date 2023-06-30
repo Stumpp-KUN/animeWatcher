@@ -1,6 +1,5 @@
 package com.example.animeWatcher.web.controller;
 
-import com.example.animeWatcher.security.SecurityService;
 import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.anime.AnimeDTOReadDescription;
 import com.example.animeWatcher.web.facade.AnimeFacade;
@@ -23,7 +22,6 @@ import java.util.List;
 public class AnimeController {
 
     private final AnimeFacade animeFacade;
-    private final SecurityService securityService;
 
     @GetMapping("/")
     public ResponseEntity<List<AnimeDTORead>> getAnimes(){
@@ -38,11 +36,8 @@ public class AnimeController {
     @GetMapping("/list")
     public ResponseEntity<Page<AnimeDTORead>> getAllAnimes(
             @RequestParam int page,
-            @RequestParam int size,
-            @RequestParam String name,
-            @RequestParam String password
+            @RequestParam int size
     ) {
-        securityService.autoLogin(name,password);
         Pageable pageable = PageRequest.of(page, size);
         Page<AnimeDTORead> animePage = animeFacade.getAllAnimes(pageable);
         HttpHeaders headers = new HttpHeaders();
