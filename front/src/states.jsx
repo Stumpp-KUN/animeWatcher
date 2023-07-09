@@ -22,35 +22,34 @@ const States = () => {
     })
 
     return (
-        <div>
-          <YourComponent />
-          <div>
-              <div className='search'>
-              <input type='text' placeholder='Search state' onChange={(event)=>setValue(event.target.value)}></input> 
-            </div>
-            {states.length > 0 ? (
-              filterState.map((state) => (
-                <div
-                  className="container"
-                  key={state.id}
-                >
-                  <div className="background"></div>
-                  <div className="stateContent">
-                    <h1 className="stateName">{state.id}. {state.name}</h1>
-                    <p className="stateDesc">
-                      <AnimeDescription longDescription={state.description} />
-                    </p>
-                    <p className='authrNick'>{state.author.nickname}</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>Loading...</p>
-            )}
+      <div>
+        <YourComponent />
+        {states.length > 0 && (
+          <div className='search'>
+            <input type='text' placeholder='Search state' onChange={(event) => setValue(event.target.value)}></input>
           </div>
-        </div>
-      );
-    };
+        )}
+        {states.length > 0 ? (
+          filterState.map((state) => (
+            <div className='container' key={state.id}>
+              <div className='background'></div>
+              <div className='stateContent'>
+                <h1 className='stateName'>
+                  {state.id}. {state.name}
+                </h1>
+                <p className='stateDesc'>
+                  <AnimeDescription longDescription={state.description} />
+                </p>
+                <p className='authrNick'>{state.author.nickname}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className='notAuth'>State list are availiable only for auth users</p>
+        )}
+      </div>
+    );
+  };
 
 
 export default States;

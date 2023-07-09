@@ -12,3 +12,11 @@
     padding-top: 20px;
     padding-left: 100px;
   }
+
+  .notAuth{
+    font-size: 30px;
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding-top: 200px;
+  }

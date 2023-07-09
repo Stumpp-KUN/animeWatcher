@@ -160,3 +160,11 @@ body, html {
     padding-left: 1000px;
     padding-bottom: 80px;
   }
+
+  .notAuth{
+    font-size: 30px;
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding-top: 200px;
+  }

@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -22,11 +22,8 @@ public class UserService {
         return userRepository.findAll(pageable);
     }
 
-    public User findByUsername(String nickname) {
-        return userRepository.findByNickname(nickname);
-    }
-
     public User getUser(Long id){
         return userRepository.findById(id).orElseThrow(()->new NoSuchElementException());
     }
 }
+
