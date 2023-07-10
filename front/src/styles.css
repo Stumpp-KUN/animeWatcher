@@ -318,3 +318,8 @@ body{
   padding-top: 20px;
   font-size: 20px;
 }
+
+.email{
+  font-size: 15px;
+  padding-right: 15px;
+}
