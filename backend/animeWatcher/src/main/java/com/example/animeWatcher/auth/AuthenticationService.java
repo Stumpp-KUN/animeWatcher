@@ -1,10 +1,9 @@
 package com.example.animeWatcher.auth;
 
 import com.example.animeWatcher.config.JwtService;
-import com.example.animeWatcher.model.RoleName;
+import com.example.animeWatcher.model.Role;
 import com.example.animeWatcher.model.Token;
 import com.example.animeWatcher.model.User;
-import com.example.animeWatcher.repository.RoleRepository;
 import com.example.animeWatcher.repository.UserRepository;
 
 import com.example.animeWatcher.token.TokenRepository;
@@ -30,7 +29,6 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final RoleRepository roleRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -38,7 +36,7 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(roleRepository.findByRoleName(RoleName.USER).get())
+                .role(Role.USER)
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);

@@ -8,12 +8,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
 @CrossOrigin(origins = "http://localhost:3000")
+@PreAuthorize("hasRole('USER')")
 public class UserController {
 
     private final UserFacade userFacade;
@@ -28,5 +30,10 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("TotalPages", String.valueOf(userPage.getTotalPages()));
         return ResponseEntity.ok().headers(headers).body(userPage);
+    }
+
+    @GetMapping("/email")
+    public ResponseEntity<UserDTORead> getUserByEmail(@RequestParam String email){
+        return ResponseEntity.ok(userFacade.getUserByEmail(email));
     }
 }

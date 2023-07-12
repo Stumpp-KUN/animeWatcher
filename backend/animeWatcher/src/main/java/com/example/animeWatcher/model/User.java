@@ -31,9 +31,9 @@ public class User implements UserDetails {
     private List<State> articles;
     @Transient
     private String passwordConfirm;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    @Enumerated(EnumType.STRING)
     private Role role;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 

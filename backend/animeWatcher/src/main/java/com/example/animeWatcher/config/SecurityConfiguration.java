@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static com.example.animeWatcher.model.RoleName.*;
+import static com.example.animeWatcher.model.Role.*;
 import static com.example.animeWatcher.model.Permission.*;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
@@ -38,6 +38,7 @@ public class SecurityConfiguration {
     http
             .csrf()
             .disable()
+            .cors().and()
             .authorizeHttpRequests()
             .requestMatchers(
                     "/api/v1/auth/**",
@@ -57,13 +58,13 @@ public class SecurityConfiguration {
 
 
             .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
-
+            .requestMatchers("/api/v1/states/**").hasAnyRole(USER.name(),ADMIN.name())
+            .requestMatchers("/api/v1/users/**").hasAnyRole(USER.name(),ADMIN.name())
 
             .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
             .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
             .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
             .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
-
             .anyRequest()
             .authenticated()
             .and()

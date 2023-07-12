@@ -19,4 +19,8 @@ public class UserFacade {
         Page<User> users=userService.getAllUsers(pageable);
         return users.map(userToDTOConverter::convertUserToReadDto);
     }
+
+    public UserDTORead getUserByEmail(String email){
+        return userToDTOConverter.convertUserToReadDto(userService.getUserByEmail(email));
+    }
 }
