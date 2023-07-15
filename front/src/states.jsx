@@ -7,12 +7,13 @@ import TokenContext from './TokenContext';
 const States = () => {
   const [states, setStateData] = useState([]);
   const accessToken = useContext(TokenContext);
+  const savedAccessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    if (accessToken) {
+    if (savedAccessToken) {
       fetch('http://localhost:8080/api/v1/states/', {
         headers: {
-          Authorization: `Bearer ${accessToken}`
+          Authorization: `Bearer ${savedAccessToken}`
         }
       })
         .then((response) => response.json())

@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/states")
 @CrossOrigin(origins = "http://localhost:3000")
+@PreAuthorize("hasRole('USER')")
 public class StateController {
     private final StateFacade stateFacade;
 

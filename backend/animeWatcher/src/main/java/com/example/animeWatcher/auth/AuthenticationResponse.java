@@ -1,5 +1,6 @@
 package com.example.animeWatcher.auth;
 
+import com.example.animeWatcher.model.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

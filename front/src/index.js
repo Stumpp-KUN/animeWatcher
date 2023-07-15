@@ -9,6 +9,7 @@ import States from './states.jsx';
 import User from './userPage.jsx';
 import Contact from './contacts.jsx';
 import Receive from './receive.jsx';
+import UserProfile from './userProfile.jsx';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
@@ -21,6 +22,7 @@ ReactDOM.render(
       <Route path="/users" component={User}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/receives" component={Receive}/> 
+      <Route path="/profile/:userId" component={UserProfile} />
     </Switch>
   </Router>,
   rootElement

@@ -34,6 +34,12 @@ public class UserController {
 
     @GetMapping("/email")
     public ResponseEntity<UserDTORead> getUserByEmail(@RequestParam String email){
+        System.out.println(userFacade.getUserByEmail(email).toString());
         return ResponseEntity.ok(userFacade.getUserByEmail(email));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTORead> getUser(@PathVariable Long id){
+        return ResponseEntity.ok(userFacade.getUser(id));
     }
 }

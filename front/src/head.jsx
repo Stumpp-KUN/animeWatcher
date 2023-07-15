@@ -9,7 +9,7 @@ import States from './states.jsx';
 import './styles.css';
 
 import TokenContext from './TokenContext';
-import UserContext from './UserContext'; // Добавлен контекст пользователя
+import UserContext from './UserContext';
 
 function YourComponent() {
   const history = useHistory();
@@ -24,7 +24,7 @@ function YourComponent() {
   const [userId, setUserId] = useState('');
   const [nickname, setNickname] = useState('');
 
-  const userContext = useContext(UserContext); // Используем контекст пользователя
+  const userContext = useContext(UserContext);
 
   const openModal = () => {
     setModalOpen(true);
@@ -48,6 +48,7 @@ function YourComponent() {
         const accessToken = response.data.access_token;
         // Сохранение токена accessToken
         setAccessToken(accessToken);
+        localStorage.setItem('accessToken', accessToken);
         // Переход на другую страницу
         history.push('/');
         setIsLoggedIn(true);
@@ -55,23 +56,7 @@ function YourComponent() {
         closeModal();
         setEmail('');
         setPassword('');
-
-        axios
-          .get('http://localhost:8080/api/v1/users/email', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`
-            },
-            params: {
-              email: userEmail
-            }
-          })
-          .then(response => {
-            setUserId(response.data.id);
-            setNickname(response.data.nickname);
-          })
-          .catch(error => {
-            console.error('Failed to fetch user information:', error);
-          });
+        userInfoRequest();
       })
       .catch(error => {
         setError('Incorrect Email Or Password');
@@ -80,6 +65,29 @@ function YourComponent() {
         setPassword('');
       });
   };
+
+  const userInfoRequest = axios.get('http://localhost:8080/api/v1/users/email', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          },
+          params: {
+            email: userEmail
+          }
+        });
+  
+        Promise.all([userInfoRequest])
+          .then(responses => {
+            const userInfoResponse = responses[0];
+            setUserId(userInfoResponse.data.id);
+            setNickname(userInfoResponse.data.firstname);
+            localStorage.setItem('nickname', nickname);
+            localStorage.setItem('id', userId);
+          })
+          .catch(error => {
+            console.error('Failed to fetch user information:', error);
+          });
+  
+  
 
   useEffect(() => {
     let timeoutId;
@@ -107,9 +115,13 @@ function YourComponent() {
 
   useEffect(() => {
     const savedAccessToken = localStorage.getItem('accessToken');
+    const savedNickname = localStorage.getItem('nickname');
+    const savedId = localStorage.getItem('id');
     if (savedAccessToken) {
       setAccessToken(savedAccessToken);
       setIsLoggedIn(true);
+      setNickname(savedNickname);
+      setUserId(savedId);
     }
   }, []);
 
@@ -145,7 +157,16 @@ function YourComponent() {
             <div className="auth">
               {isLoggedIn ? (
                 <div className="user-info">
+                  <Link
+                          to={{
+                          pathname: `/profile/${userId}`,
+                          state: { accessToken, userId }
+                          }}
+                          className="animeTitle"
+                          >
                   <span className="nickname">{nickname}</span>
+                  </Link>
+                  
                   <button className="button-7" role="button" onClick={logout}>
                     Logout
                   </button>
@@ -168,7 +189,7 @@ function YourComponent() {
                             placeholder="Email"
                             className="log-input"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
 
                           <div className="password-container">
@@ -179,7 +200,7 @@ function YourComponent() {
                                 className="pas-input"
                                 id="password-input"
                                 value={password}
-                                onChange={e => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                               <span
                                 className="password-toggle"
@@ -223,7 +244,6 @@ function YourComponent() {
           </div>
           <Switch>
             <Route exact path="/" component={NewsComponent} />
-            {/* Добавьте другие маршруты */}
           </Switch>
         </div>
       </UserContext.Provider>

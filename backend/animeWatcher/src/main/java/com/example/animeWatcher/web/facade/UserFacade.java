@@ -23,4 +23,8 @@ public class UserFacade {
     public UserDTORead getUserByEmail(String email){
         return userToDTOConverter.convertUserToReadDto(userService.getUserByEmail(email));
     }
+
+    public UserDTORead getUser(Long id){
+        return userToDTOConverter.convertUserToReadDto(userService.getUser(id));
+    }
 }

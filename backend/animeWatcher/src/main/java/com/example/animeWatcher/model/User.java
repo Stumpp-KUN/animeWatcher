@@ -33,9 +33,9 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Token> tokens;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user")
+//    private List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
