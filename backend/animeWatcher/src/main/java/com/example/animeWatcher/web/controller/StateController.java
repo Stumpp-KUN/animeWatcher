@@ -19,6 +19,7 @@ public class StateController {
     private final StateFacade stateFacade;
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<StateDTORead> getState(@PathVariable Long id){
         return new ResponseEntity<>(stateFacade.getState(id), HttpStatus.ACCEPTED);
     }

@@ -14,7 +14,12 @@ import static com.example.animeWatcher.model.Permission.*;
 @RequiredArgsConstructor
 public enum Role {
 
-    USER(Collections.emptySet()),
+    USER(
+            Set.of(
+                    USER_READ,
+                    USER_UPDATE
+            )
+    ),
     ADMIN(
             Set.of(
                     ADMIN_READ,
