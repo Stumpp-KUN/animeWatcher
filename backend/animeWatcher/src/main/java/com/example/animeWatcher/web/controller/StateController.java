@@ -14,12 +14,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/states")
 @CrossOrigin(origins = "http://localhost:3000")
-@PreAuthorize("hasRole('USER')")
+@PreAuthorize("hasAnyRole('USER')")
 public class StateController {
     private final StateFacade stateFacade;
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('user:read')")
     public ResponseEntity<StateDTORead> getState(@PathVariable Long id){
         return new ResponseEntity<>(stateFacade.getState(id), HttpStatus.ACCEPTED);
     }

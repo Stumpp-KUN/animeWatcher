@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import Component from './head';
+import { Link, useHistory } from 'react-router-dom';
 
 import './user.css';
 
 const Users = () => {
   const [users, setUser] = useState({});
+  const [userId, setUserId] = useState(0); 
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const savedAccessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/users/list?page=${currentPage}&size=5`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setUser(data.content);
-        setTotalPages(data.totalPages);
+    if (savedAccessToken) {
+      fetch(`http://localhost:8080/api/v1/users/list?page=${currentPage}&size=5`, {
+        headers: {
+          Authorization: `Bearer ${savedAccessToken}`
+        }
       })
-      .catch((error) => console.log(error));
-  }, [currentPage]);
+        .then((response) => response.json())
+        .then((data) => {
+          setUser(data.content);
+        setTotalPages(data.totalPages);
+        setUserId(data.content.id)
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [savedAccessToken,currentPage]);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -33,7 +42,14 @@ const Users = () => {
               <div className='background'></div>
               <div className='stateContent'>
                 <div className='animeInfo'>
-                  <h1 className='userNick'>{user.nickname}</h1>
+                <Link to={{
+                          pathname: `/profile/${user.id}`,
+                          state: { accessToken: savedAccessToken, userId: user.id }
+                          }}
+                          className="animeTitle"
+                          >
+                            <h1 className='animeNick'> {user.firstname} </h1>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,6 +1,5 @@
 package com.example.animeWatcher.web.controller;
 
-import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.receive.ReceiveDTORead;
 import com.example.animeWatcher.web.facade.ReceiveFacade;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/receives")
 @CrossOrigin(origins = "http://localhost:3000")
-@PreAuthorize("hasRole('USER')")
+@PreAuthorize("hasAnyRole('USER')")
 public class ReceiveController {
     private final ReceiveFacade receiveFacade;
 
