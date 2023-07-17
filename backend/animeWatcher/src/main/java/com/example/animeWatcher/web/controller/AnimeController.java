@@ -28,6 +28,11 @@ public class AnimeController {
         return new ResponseEntity<>(animeFacade.getRandomAnimes(), HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/popular")
+    public ResponseEntity<AnimeDTOReadDescription> getPopularAnime(){
+        return new ResponseEntity<>(animeFacade.getPopAnime(),HttpStatus.ACCEPTED);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<AnimeDTOReadDescription> getAnime(@PathVariable Long id){
         return new ResponseEntity<>(animeFacade.getAnime(id),HttpStatus.ACCEPTED);

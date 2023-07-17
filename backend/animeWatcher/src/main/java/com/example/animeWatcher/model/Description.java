@@ -19,6 +19,10 @@ public class Description {
     private Integer episodes;
     private String ageRestrictions;
     private String mangaName;
+    @Column(length = 600)
+    private String photoURL;
+    @Column(length = 600)
+    private String videoURL;
     @OneToOne
     private Anime anime;
 }

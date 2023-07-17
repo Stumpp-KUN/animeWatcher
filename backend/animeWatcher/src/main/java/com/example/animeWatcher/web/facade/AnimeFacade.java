@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class AnimeFacade {
     private final AnimeService animeService;
     private final DescriptionService descriptionService;
     private final AnimeToDTOAnimeConverter animeToDTOAnimeConverter;
+    private Random random = new Random();
 
     public List<AnimeDTORead> getRandomAnimes(){
         List<AnimeDTORead> animes=new ArrayList<>();
@@ -36,6 +38,19 @@ public class AnimeFacade {
                 animes.remove(i);
         }
         return animes;
+    }
+
+    public AnimeDTOReadDescription getPopAnime(){
+        List<AnimeDTORead> animes=new ArrayList<>();
+
+        animeService.getRandomAnimes()
+                .stream()
+                .sorted(Comparator.comparingInt(Anime::getLikes).reversed())
+                .forEach(anime -> animes.add(animeToDTOAnimeConverter.convertAnimeToReadDto(anime)));
+        int k = random.nextInt(3) ;
+        AnimeDTOReadDescription dto=new AnimeDTOReadDescription();
+        dto.setAnimeDTORead(animes.get(k));
+        return  reUpdateAnimeDtoReadDescription(dto,descriptionService.getDescriptionByAnimeId(dto.getAnimeDTORead().getId()));
     }
 
     public Page<AnimeDTORead> getAllAnimes(Pageable pageable) {
@@ -54,6 +69,8 @@ public class AnimeFacade {
         anime.setAgeRestrictions(description.getAgeRestrictions());
         anime.setMangaName(description.getMangaName());
         anime.setStudio(description.getStudio());
+        anime.setPhotoURL(description.getPhotoURL());
+        anime.setVideoURL(description.getVideoURL());
         return anime;
     }
 }
