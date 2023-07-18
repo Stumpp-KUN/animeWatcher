@@ -10,12 +10,13 @@ import User from './userPage.jsx';
 import Contact from './contacts.jsx';
 import Receive from './receive.jsx';
 import UserProfile from './userProfile.jsx';
+import NewsComponent from './mainPage.jsx';
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route exact path="/" component={YourComponent} />
+      <Route exact path="/" component={NewsComponent} />
       <Route path="/anime/:id" component={AnimePage} />
       <Route path="/animes" component={Animes}/>
       <Route path="/states" component={States}/>

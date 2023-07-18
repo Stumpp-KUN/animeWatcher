@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import YourComponent from './head';
 
 import './styles.css';
 
@@ -9,31 +10,20 @@ function NewsComponent() {
   const [popAnime, setPopAnime] = useState([]);
   const [extAnime, setExtAnime] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     let timeoutId;
-
-    if (isHovered) {
+   
       timeoutId = setTimeout(() => {
         setShowVideo(true);
-      }, 5000);
-    }
+      }, 15000);
+    
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isHovered]);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setShowVideo(false);
-  };
+  });
 
   useEffect(() => {
     fetch('http://localhost:8080/api/v1/animes/')
@@ -61,15 +51,23 @@ function NewsComponent() {
 
   return (
     <div>
-      <div className="bigBanner" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className="bigBanner">
       {showVideo ? (
         <ReactPlayer
-          url={popAnime.videoURL}
-          controls
-          width="100%"
-          height="100%"
-          playing
-        />
+        url={popAnime.videoURL}
+        controls
+        width="100%"
+        height="100%"
+        playing
+        config={{
+          youtube: {
+            playerVars: {
+              modestbranding: 1,
+              fs: 0, 
+            },
+          },
+        }}
+      />
       ) : (
         <div>
 
@@ -107,16 +105,20 @@ function NewsComponent() {
         
       </div>
 
+<div className='header'>
+  <YourComponent className='yourComponent'/>
+</div>
+
+            
       <div className='mainPage'>
         <div className="popularAnime">
-          <h1 className="top">The most likes titles</h1>
-          {animeData.map((anime) => (
+          <h1 className="top">Tier list anime</h1>
+          {animeData.map((anime,index) => (
             
             <div key={anime.title} className="animeIcon">
-              <Link to={`/anime/${anime.id}`} className="animeTitle">
-                <p>{anime.title}</p>
+              <Link to={`/anime/${anime.id}`} className="animeFil">
+                    <span>{index + 1}. {anime.title}</span>
               </Link>
-              <p className="animeDescription">{anime.description}</p>
               <p className="animeLikes">Likes: {anime.likes}</p>
               <p className="animeDislikes">Dislikes: {anime.dislikes}</p>
               <div className="likes-dislikes-line">

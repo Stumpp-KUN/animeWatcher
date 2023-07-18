@@ -47,7 +47,7 @@ public class AnimeFacade {
                 .stream()
                 .sorted(Comparator.comparingInt(Anime::getLikes).reversed())
                 .forEach(anime -> animes.add(animeToDTOAnimeConverter.convertAnimeToReadDto(anime)));
-        int k = random.nextInt(3) ;
+        int k = random.nextInt(5) ;
         AnimeDTOReadDescription dto=new AnimeDTOReadDescription();
         dto.setAnimeDTORead(animes.get(k));
         return  reUpdateAnimeDtoReadDescription(dto,descriptionService.getDescriptionByAnimeId(dto.getAnimeDTORead().getId()));

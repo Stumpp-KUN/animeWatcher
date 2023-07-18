@@ -15,7 +15,6 @@ public class Anime {
     private Long id;
     private String title;
     private String description;
-    private String videoUrl;
     private int likes;
     private int dislikes;
 }

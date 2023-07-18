@@ -131,11 +131,11 @@ function YourComponent() {
         <div>
           <div className="vidj">
             <div className="imagePlace">
-              <p>
+              <span>
                 <Link className="animeWatcher" to="/">
                   AnimeWatcher
                 </Link>
-              </p>
+              </span>
             </div>
             <div className="vidjets">
               <Link to="/animes" className="vid">
@@ -242,9 +242,7 @@ function YourComponent() {
               )}
             </div>
           </div>
-          <Switch>
-            <Route exact path="/" component={NewsComponent} />
-          </Switch>
+          
         </div>
       </UserContext.Provider>
     </TokenContext.Provider>

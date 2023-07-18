@@ -9,7 +9,7 @@ body, html {
     height: 100vh;
     width: 100%;
     padding-top: 30px;
-    background-color: #B0B0B0;
+    background-color: black;
     padding-bottom: 20px;
   }
 
@@ -18,7 +18,7 @@ body, html {
     height: 450px;
     width: 100%;
     padding-top: 30px;
-    background-color: #B0B0B0;
+    background-color: black;
     padding-bottom: 20px;
   }
   
@@ -150,6 +150,7 @@ body, html {
     padding-top: 20px;
     padding-left: 420px;
     font-size: 20px;
+    color: white;
   }
 
   .authrNick{
@@ -167,4 +168,11 @@ body, html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     padding-top: 200px;
+  }
+  
+
+  .animeTitle{
+    color: black;
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
   }

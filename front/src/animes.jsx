@@ -44,7 +44,7 @@ const Animes = () => {
                                     <img src={`/animeIcons/${anime.id}.jpg`} alt='Anime' style={{ float: 'left', marginRight: '100px', marginLeft: '30px' }}></img>
                                     <div className='animeInfo'>
                                         <Link to={`/anime/${anime.id}`} className='animeTitle'>
-                                            <h1 className='animeTitle'>{anime.title}</h1>
+                                            <span className='animeTitle'>{anime.title}</span>
                                         </Link>
                                         <p className='animeDescription'>{anime.description}</p>
                                         <p className='animeLikes'>Likes: {anime.likes}</p>
