@@ -76,6 +76,13 @@ body, html {
     padding-top: 40px;
     font-size: 60px;
   }
+
+  .titleExt{
+    font-size: 60px;
+    margin: auto;
+    text-align: center;
+    padding-left: 350px;
+  }
   
   .key-value-columns {
     display: grid;
@@ -92,11 +99,16 @@ body, html {
   
   .key-value-columns dd {
     margin-left: 0;
-    font-size: 18px;
+    font-size: 22px;
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
   }
   
   .description{
     padding-top: 50px;
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
+    font-size: 22px;
   }
 
   .likes-dislikes-line{

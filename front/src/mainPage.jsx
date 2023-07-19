@@ -11,12 +11,14 @@ function NewsComponent() {
   const [extAnime, setExtAnime] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     let timeoutId;
    
       timeoutId = setTimeout(() => {
         setShowVideo(true);
+        setShowBanner(false);
       }, 15000);
     
 
@@ -98,7 +100,9 @@ function NewsComponent() {
         </div>
 
         <div className="big_banner_button_container">
+        <Link to={`/anime/${extAnime.id}`} className='animeTitle'>
         <button class="button-1" role="button">Смотреть</button>
+        </Link>
         </div>
         </div>
       )}

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -34,6 +35,8 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Image image;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

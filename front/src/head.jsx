@@ -144,9 +144,6 @@ function YourComponent() {
               <Link to="/states" className="vid">
                 States
               </Link>
-              <Link to="/users" className="vid">
-                Users
-              </Link>
               <Link to="/receives" className="vid">
                 Receives
               </Link>

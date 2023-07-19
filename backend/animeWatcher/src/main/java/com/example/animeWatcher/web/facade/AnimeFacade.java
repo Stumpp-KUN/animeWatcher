@@ -59,8 +59,10 @@ public class AnimeFacade {
     }
 
     public AnimeDTOReadDescription getAnime(Long id){
-        AnimeDTOReadDescription animeDTOReadDescription = animeToDTOAnimeConverter.convertAnimeToReadDtoDescription(animeService.getAnime(id));
-        return reUpdateAnimeDtoReadDescription(animeDTOReadDescription,descriptionService.getDescriptionByAnimeId(animeDTOReadDescription.getId()));
+        AnimeDTOReadDescription animeDTOReadDescription = new AnimeDTOReadDescription();
+        animeDTOReadDescription.setAnimeDTORead(animeToDTOAnimeConverter.convertAnimeToReadDto(animeService.getAnime(id)));
+        System.out.println(animeDTOReadDescription);
+        return reUpdateAnimeDtoReadDescription(animeDTOReadDescription,descriptionService.getDescriptionByAnimeId(animeDTOReadDescription.getAnimeDTORead().getId()));
     }
 
     private AnimeDTOReadDescription reUpdateAnimeDtoReadDescription (AnimeDTOReadDescription anime,Description description){
