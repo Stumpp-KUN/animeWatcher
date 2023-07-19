@@ -1,5 +1,6 @@
 package com.example.animeWatcher.web.controller;
 
+import com.example.animeWatcher.web.dto.user.UserDTOCreate;
 import com.example.animeWatcher.web.dto.user.UserDTORead;
 import com.example.animeWatcher.web.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,5 +45,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTORead> getUser(@PathVariable Long id){
         return ResponseEntity.ok(userFacade.getUser(id));
+    }
+
+    @PostMapping("/updPhoto")
+    public ResponseEntity<UserDTOCreate> updatePhoto(@RequestParam MultipartFile file, @RequestBody UserDTOCreate userDTOCreate) throws IOException {
+        System.out.println(userDTOCreate.toString());
+        return ResponseEntity.ok(userFacade.updatePhoto(userDTOCreate,file));
     }
 }

@@ -17,4 +17,12 @@ public class UserToDTOConverter {
     public User convertReadDtoToUser(UserDTORead dto){
         return modelMapper.map(dto,User.class);
     }
+
+    public UserDTOCreate convertUserToCreateDto(User entity){
+        return modelMapper.map(entity, UserDTOCreate.class);
+    }
+
+    public User convertCreateDtoToUser(UserDTOCreate dto){
+        return modelMapper.map(dto,User.class);
+    }
 }
