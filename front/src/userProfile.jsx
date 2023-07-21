@@ -10,6 +10,7 @@ const UserProfile = () => {
   const userId = location.state?.userId;
   const [userInfo, setUserInfo] = useState(null);
   const [image1, setImage1] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const history = useHistory();
 
   const handleRedirect = () => {
@@ -28,7 +29,7 @@ const UserProfile = () => {
     }
 
     const formData = new FormData();
-    formData.append('userDTOCreate', JSON.stringify(userInfo));
+    formData.append('id', userId);
     formData.append('file', image1);
 
     axios
@@ -58,6 +59,13 @@ const UserProfile = () => {
         })
         .then(response => {
           setUserInfo(response.data);
+          if (response.data?.image?.bytes) {
+            const blob = new Blob([new Uint8Array(response.data.image.bytes)], { type: response.data.image.contentType });
+            const urlCreator = window.URL || window.webkitURL;
+            const imageUrl = urlCreator.createObjectURL(blob); 
+            console.log(imageUrl);
+            setImageUrl(imageUrl);
+          }
         })
         .catch(error => {
           console.error('Failed to fetch user information:', error);
@@ -70,6 +78,9 @@ const UserProfile = () => {
       <h1 className="profile-title">Profile</h1>
       {userInfo ? (
         <div className="profile-info">
+          <p>
+          {imageUrl ? <img src={imageUrl} alt="User Avatar" /> : <p>No image available</p>}
+          </p>
           <p className="profile-item">
             <span className="profile-label">User ID:</span> {userInfo.id}
           </p>

@@ -37,6 +37,7 @@ public class UserService {
             image1 = toImageEntity(image);
             user.setImage(image1);
         }
+        System.out.println(user.getImage().getName());
         return userRepository.save(user);
     }
 

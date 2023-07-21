@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -47,9 +48,10 @@ public class UserController {
         return ResponseEntity.ok(userFacade.getUser(id));
     }
 
-    @PostMapping("/updPhoto")
-    public ResponseEntity<UserDTOCreate> updatePhoto(@RequestParam MultipartFile file, @RequestBody UserDTOCreate userDTOCreate) throws IOException {
-        System.out.println(userDTOCreate.toString());
-        return ResponseEntity.ok(userFacade.updatePhoto(userDTOCreate,file));
+    @PostMapping( "/updPhoto")
+    public ResponseEntity<?> updatePhoto(@RequestParam("file") MultipartFile file, @RequestParam Long id) throws IOException {
+
+        return ResponseEntity.ok(userFacade.updatePhoto(id,file));
     }
+
 }

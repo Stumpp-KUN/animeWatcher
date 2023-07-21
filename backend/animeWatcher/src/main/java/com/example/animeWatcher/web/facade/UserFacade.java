@@ -1,5 +1,6 @@
 package com.example.animeWatcher.web.facade;
 
+import com.example.animeWatcher.model.Image;
 import com.example.animeWatcher.model.User;
 import com.example.animeWatcher.web.dto.user.UserDTOCreate;
 import com.example.animeWatcher.web.dto.user.UserDTORead;
@@ -32,10 +33,9 @@ public class UserFacade {
         return userToDTOConverter.convertUserToReadDto(userService.getUser(id));
     }
 
-    public UserDTOCreate updatePhoto(UserDTOCreate dto, MultipartFile image) throws IOException {
-         return userToDTOConverter.convertUserToCreateDto(
-                 userService.updatePhoto(
-                         userService.getUser(
-                                 userToDTOConverter.convertCreateDtoToUser(dto).getId()),image));
+    public UserDTOCreate updatePhoto(Long id, MultipartFile image) throws IOException {
+         return userToDTOConverter.convertUserToCreateDto(userService.updatePhoto(userService.getUser(id),image));
     }
+
+
 }
