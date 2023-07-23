@@ -1,22 +1,26 @@
 .profile-container {
-    width: 1200px;
-    height: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: flex-start;
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: grey;
+  border-radius: 12px;
+  margin-top: 50px;
+}
   
   .profile-title {
     font-size: 24px;
     text-align: center;
   }
-  
+
   .profile-info {
-    margin-top: 20px;
-  }
+  flex: 1;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+}
   
   .profile-item {
     margin-bottom: 10px;
@@ -24,6 +28,7 @@
   
   .profile-label {
     font-weight: bold;
+    
   }
   
   .profile-label::after {
@@ -32,11 +37,11 @@
   
   .profile-label,
   .profile-item {
-    font-size: 16px;
+    font-size: 25px;
   }
   
   .button-7 {
-    background-color: #0095ff;
+    background-color: black;
     border: 1px solid transparent;
     border-radius: 3px;
     box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
@@ -76,7 +81,24 @@
   }
   
   .buttons {
+    margin-top: 120px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   
+  .photoAv {
+    width: 300px; 
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .photo-container {
+    margin-right: 20px;
+    margin-top: 100px;
+  }
+
+  .profile-info {
+  flex: 1;
+}
+

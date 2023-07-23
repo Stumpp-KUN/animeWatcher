@@ -50,8 +50,13 @@ public class UserController {
 
     @PostMapping( "/updPhoto")
     public ResponseEntity<?> updatePhoto(@RequestParam("file") MultipartFile file, @RequestParam Long id) throws IOException {
-
         return ResponseEntity.ok(userFacade.updatePhoto(id,file));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Long id){
+        userFacade.deleteUser(id);
+
     }
 
 }

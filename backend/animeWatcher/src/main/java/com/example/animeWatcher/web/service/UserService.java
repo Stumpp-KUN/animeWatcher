@@ -2,7 +2,9 @@ package com.example.animeWatcher.web.service;
 
 import com.example.animeWatcher.model.Image;
 import com.example.animeWatcher.model.User;
+import com.example.animeWatcher.repository.ImageRepository;
 import com.example.animeWatcher.repository.UserRepository;
+import com.example.animeWatcher.token.TokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,12 +14,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class UserService {
     private final UserRepository userRepository;
+    private final ImageRepository imageRepository;
+    private final TokenRepository tokenRepository;
 
     public Page<User> getAllUsers(Pageable pageable){
         return userRepository.findAll(pageable);
@@ -50,5 +55,17 @@ public class UserService {
         image1.setBytes(image.getBytes());
         return image1;
     }
+
+    public void deleteUser(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            tokenRepository.deleteByUser(user);
+            userRepository.deleteById(id);
+        }
+    }
+
+
 }
 

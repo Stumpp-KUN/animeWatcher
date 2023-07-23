@@ -37,5 +37,8 @@ public class UserFacade {
          return userToDTOConverter.convertUserToCreateDto(userService.updatePhoto(userService.getUser(id),image));
     }
 
-
+    public boolean deleteUser(Long id){
+        userService.deleteUser(id);
+        return true;
+    }
 }

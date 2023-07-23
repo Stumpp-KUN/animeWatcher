@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory,useLocation, } from 'react-router-dom';
+
 import axios from 'axios';
 import NewsComponent from './mainPage.jsx';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
@@ -12,6 +13,7 @@ import TokenContext from './TokenContext';
 import UserContext from './UserContext';
 
 function YourComponent() {
+  const location = useLocation();
   const history = useHistory();
   const [isModalOpen, setModalOpen] = useState(false);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -19,7 +21,7 @@ function YourComponent() {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [accessToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState(location.state?.accessToken);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState('');
   const [nickname, setNickname] = useState('');
@@ -46,10 +48,8 @@ function YourComponent() {
       })
       .then(response => {
         const accessToken = response.data.access_token;
-        // Сохранение токена accessToken
         setAccessToken(accessToken);
         localStorage.setItem('accessToken', accessToken);
-        // Переход на другую страницу
         history.push('/');
         setIsLoggedIn(true);
         setUserEmail(email);

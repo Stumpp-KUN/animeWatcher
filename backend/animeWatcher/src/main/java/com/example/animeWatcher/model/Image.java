@@ -21,6 +21,7 @@ public class Image {
     private String contentType;
     @Lob
     private byte[] bytes;
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "user_id")
     private User user;
 }
