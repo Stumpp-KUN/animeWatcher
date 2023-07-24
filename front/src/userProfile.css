@@ -102,3 +102,16 @@
   flex: 1;
 }
 
+.error-item{
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.error-item div {
+  margin-bottom: 30px; 
+}
+
+.edit-field{
+  font-size: 25px;
+}
