@@ -38,11 +38,10 @@ public class UserService {
 
     public User updatePhoto(User user, MultipartFile image) throws IOException {
         Image image1;
-        if(image.getSize()!=0){
+        if(image.getSize()!=0) {
             image1 = toImageEntity(image);
             user.setImage(image1);
         }
-        System.out.println(user.getImage().getName());
         return userRepository.save(user);
     }
 
@@ -64,6 +63,14 @@ public class UserService {
             tokenRepository.deleteByUser(user);
             userRepository.deleteById(id);
         }
+    }
+
+
+    public User updateUser(User user){
+        User temp=userRepository.findById(user.getId()).get();
+        temp.setFirstname(user.getFirstname());
+        temp.setLastname(user.getLastname());
+        return userRepository.save(temp);
     }
 
 

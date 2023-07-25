@@ -4,6 +4,7 @@ import com.example.animeWatcher.model.Image;
 import com.example.animeWatcher.model.User;
 import com.example.animeWatcher.web.dto.user.UserDTOCreate;
 import com.example.animeWatcher.web.dto.user.UserDTORead;
+import com.example.animeWatcher.web.dto.user.UserDTOUpdate;
 import com.example.animeWatcher.web.dto.user.UserToDTOConverter;
 import com.example.animeWatcher.web.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +41,12 @@ public class UserFacade {
     public boolean deleteUser(Long id){
         userService.deleteUser(id);
         return true;
+    }
+
+    public UserDTOUpdate updateUser(UserDTOUpdate userDTOUpdate){
+        return userToDTOConverter.convertUserToUpdateDto(
+                userService.updateUser
+                        (userToDTOConverter.convertUpdateDtoToUser
+                                (userDTOUpdate)));
     }
 }

@@ -2,6 +2,7 @@ package com.example.animeWatcher.web.controller;
 
 import com.example.animeWatcher.web.dto.user.UserDTOCreate;
 import com.example.animeWatcher.web.dto.user.UserDTORead;
+import com.example.animeWatcher.web.dto.user.UserDTOUpdate;
 import com.example.animeWatcher.web.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -57,6 +58,12 @@ public class UserController {
     public void deleteUser(@PathVariable Long id){
         userFacade.deleteUser(id);
 
+    }
+
+
+    @PutMapping("/update")
+    public ResponseEntity<UserDTOUpdate> updateUser(@RequestBody UserDTOUpdate userDTOUpdate){
+        return ResponseEntity.ok(userFacade.updateUser(userDTOUpdate));
     }
 
 }

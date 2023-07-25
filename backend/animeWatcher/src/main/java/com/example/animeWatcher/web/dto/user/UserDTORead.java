@@ -6,9 +6,6 @@ import lombok.Data;
 
 @Data
 public class UserDTORead extends UserDTO{
-    private Long id;
-    private String firstname;
-    private String lastname;
     private String email;
     private Image image;
     private Role role;

@@ -25,4 +25,12 @@ public class UserToDTOConverter {
     public User convertCreateDtoToUser(UserDTOCreate dto){
         return modelMapper.map(dto,User.class);
     }
+
+    public UserDTOUpdate convertUserToUpdateDto(User entity){
+        return modelMapper.map(entity, UserDTOUpdate.class);
+    }
+
+    public User convertUpdateDtoToUser(UserDTOUpdate dto){
+        return modelMapper.map(dto,User.class);
+    }
 }

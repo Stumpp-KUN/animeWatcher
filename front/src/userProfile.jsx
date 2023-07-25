@@ -70,7 +70,7 @@ const UserProfile = () => {
       setIsEditing(false);
 
       if (accessToken && userId && editedFirstname.trim() !== '' && editedLastname.trim() !== '') {
-        const editedData = {
+        const userDTOUpdate = {
           id: userId,
           firstname: editedFirstname,
           lastname: editedLastname,
@@ -78,7 +78,7 @@ const UserProfile = () => {
           role: userInfo.role,
         };
   
-        await axios.put(`http://localhost:8080/api/v1/edit/${userId}`, editedData, {
+        await axios.put(`http://localhost:8080/api/v1/users/update`, userDTOUpdate, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
