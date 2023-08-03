@@ -1,0 +1,22 @@
+.doc_page {
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+* {
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scrollbar-width: none;
+}
+
+.info_page {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #222;
+    color: #fff;
+    font-family: sans-serif;
+    width: 80%;
+}

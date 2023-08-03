@@ -1,0 +1,59 @@
+.animeWatch{
+    display: flex;
+    flex-direction: row;
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
+    color: white;
+    padding-left: 50px;
+    height: 140px;
+    background-color: black;
+    justify-content: space-between;
+}
+
+.line{
+    background: linear-gradient(to right, #ff0000, #00ff00);
+}
+
+.firstP{
+    display: flex;
+    flex-direction: column;
+}
+
+.icons{
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+}
+
+.text{
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.social{
+    display: flex;
+    flex-direction: row;
+}
+
+.agree{
+    display: flex;
+  flex-direction: column;
+    padding-top: 30px;
+}
+
+.online{
+    padding-right: 100px;
+    padding-top: 20px;
+}
+
+.agreement{
+    text-decoration: none;
+    color: white;
+    font-family: Noto Sans,sans-serif;
+    box-sizing: border-box;
+}
+
+.agreement:hover{
+    color: grey;
+}
