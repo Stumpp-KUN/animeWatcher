@@ -60,7 +60,6 @@ public class UserController {
 
     }
 
-
     @PutMapping("/update")
     public ResponseEntity<UserDTOUpdate> updateUser(@RequestBody UserDTOUpdate userDTOUpdate){
         return ResponseEntity.ok(userFacade.updateUser(userDTOUpdate));

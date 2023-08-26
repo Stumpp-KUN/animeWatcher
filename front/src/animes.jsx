@@ -37,7 +37,7 @@ const Animes = () => {
                 </div>
                 {filterAnime.length > 0 ? (
                     filterAnime.map((anime) => (
-                        <div className='containerA' key={anime.id}>
+                        <div className='container'>
                             <div className='background'></div>
                             <div className='content'>
                                 <div className='animeCoin'>

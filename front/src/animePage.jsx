@@ -40,24 +40,11 @@ const AnimePage = ({ match }) => {
         {extAnime.title ? (
           <>
             <div className="container">
-              <div className="content">
-                <img src={anime.photoURL}></img>
-                <span className='titleExt'>{extAnime.title}</span>
-                <div className="likes-dislikes-line">
-                  <div
-                    className="likes"
-                    style={{
-                      width: `${(extAnime.likes / (extAnime.likes + extAnime.dislikes)) * 100}%`,
-                    }}
-                  ></div>
-                  <div
-                    className="dislikes"
-                    style={{
-                      width: `${(extAnime.dislikes / (extAnime.likes + extAnime.dislikes)) * 100}%`,
-                    }}
-                  ></div>
+              <div className="animeContent">
+                <div className='photoContainer'>
+                <img src={anime.photoURL} className='animePhoto'></img>
                 </div>
-
+                <span className='titleExt'>{extAnime.title}</span>
                 <div>
                   <img src={`/animeIcons/${extAnime.id}.jpg`} alt="Anime" style={{ float: "left", marginRight: "100px", marginLeft: "30px" }} />
                   <dl className="key-value-columns">
