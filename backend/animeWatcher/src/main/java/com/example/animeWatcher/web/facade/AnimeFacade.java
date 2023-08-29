@@ -7,10 +7,12 @@ import com.example.animeWatcher.web.service.DescriptionService;
 import com.example.animeWatcher.web.dto.anime.AnimeDTORead;
 import com.example.animeWatcher.web.dto.anime.AnimeDTOReadDescription;
 import com.example.animeWatcher.web.dto.anime.AnimeToDTOAnimeConverter;
+import com.example.animeWatcher.web.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,9 +23,18 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class AnimeFacade {
     private final AnimeService animeService;
+    private final UserService userService;
     private final DescriptionService descriptionService;
     private final AnimeToDTOAnimeConverter animeToDTOAnimeConverter;
     private Random random = new Random();
+
+    public AnimeDTORead likeAnime(AnimeDTOReadDescription data, Long id) throws NoSuchFieldException {
+        if(userService.checkLiked(animeToDTOAnimeConverter.convertAnimeDtoDescToAnime(data),id)==false) {
+            return animeToDTOAnimeConverter.convertAnimeToReadDto(
+                    animeService.likeAnime(animeToDTOAnimeConverter.convertAnimeDtoDescToAnime(data)));
+        }
+        else throw new NoSuchFieldException("Anime already liked");
+    }
 
     public List<AnimeDTORead> getRandomAnimes(){
         List<AnimeDTORead> animes=new ArrayList<>();

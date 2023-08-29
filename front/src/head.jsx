@@ -50,9 +50,10 @@ function YourComponent() {
         const accessToken = response.data.access_token;
         setAccessToken(accessToken);
         localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('email',email);
         history.push('/');
         setIsLoggedIn(true);
-        setUserEmail(email);
+        
         closeModal();
         setEmail('');
         setPassword('');
@@ -66,26 +67,31 @@ function YourComponent() {
       });
   };
 
-  const userInfoRequest = axios.get('http://localhost:8080/api/v1/users/email', {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          },
-          params: {
-            email: userEmail
-          }
-        });
+  let userInfoRequest;
   
-        Promise.all([userInfoRequest])
-          .then(responses => {
-            const userInfoResponse = responses[0];
-            setUserId(userInfoResponse.data.id);
-            setNickname(userInfoResponse.data.firstname);
-            localStorage.setItem('nickname', nickname);
-            localStorage.setItem('id', userId);
-          })
-          .catch(error => {
-            console.error('Failed to fetch user information:', error);
-          });
+  if (isLoggedIn) {
+    const userInfoRequest = axios.get('http://localhost:8080/api/v1/users/email', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      },
+      params: {
+        email: localStorage.getItem('email')
+      }
+    });
+  
+    Promise.all([userInfoRequest])
+      .then(responses => {
+        const userInfoResponse = responses[0];
+        setUserId(userInfoResponse.data.id);
+        setNickname(userInfoResponse.data.firstname);
+        localStorage.setItem('nickname', nickname);
+        localStorage.setItem('id', userId);
+      })
+      .catch(error => {
+        console.error('Failed to fetch user information:', userEmail);
+      });
+  }
+  
   
   
 

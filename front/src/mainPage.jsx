@@ -103,7 +103,7 @@ function NewsComponent() {
 
         <div className="big_banner_button_container">
         <Link to={`/anime/${extAnime.id}`} className='animeTitle'>
-        <button class="button-1" role="button">Смотреть</button>
+        <button className="button-1" role="button">Смотреть</button>
         </Link>
         </div>
         </div>

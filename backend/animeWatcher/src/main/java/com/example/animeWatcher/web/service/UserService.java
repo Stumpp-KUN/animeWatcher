@@ -1,5 +1,6 @@
 package com.example.animeWatcher.web.service;
 
+import com.example.animeWatcher.model.Anime;
 import com.example.animeWatcher.model.Image;
 import com.example.animeWatcher.model.User;
 import com.example.animeWatcher.repository.ImageRepository;
@@ -73,6 +74,11 @@ public class UserService {
         return userRepository.save(temp);
     }
 
-
+    public boolean checkLiked(Anime anime, Long id){
+        User user=getUser(id);
+        if(user.getLiked().contains(anime))
+            return true;
+        else return false;
+    }
 }
 

@@ -31,6 +31,8 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<State> articles;
+    @OneToMany
+    private List<Anime> liked;
     @Transient
     private String passwordConfirm;
     @Enumerated(EnumType.STRING)

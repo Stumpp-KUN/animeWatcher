@@ -30,4 +30,9 @@ public class AnimeService {
         return animeRepository.findById(id).orElseThrow(()->new NoSuchElementException("There is not element with id "+id));
 
     }
+
+    public Anime likeAnime(Anime anime){
+        anime.setLikes(anime.getLikes()+1);
+        return animeRepository.save(anime);
+    }
 }

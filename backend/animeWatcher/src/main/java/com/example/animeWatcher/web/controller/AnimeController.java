@@ -50,4 +50,9 @@ public class AnimeController {
         return ResponseEntity.ok().headers(headers).body(animePage);
     }
 
+    @PostMapping("/like")
+    public ResponseEntity<AnimeDTORead> likeAnime(@RequestParam AnimeDTOReadDescription data, @RequestParam Long id) throws NoSuchFieldException {
+        return new ResponseEntity<>(animeFacade.likeAnime(data,id),HttpStatus.ACCEPTED);
+    }
+
 }

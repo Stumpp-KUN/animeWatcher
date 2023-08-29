@@ -40,7 +40,6 @@ public class UserController {
 
     @GetMapping("/email")
     public ResponseEntity<UserDTORead> getUserByEmail(@RequestParam String email){
-        System.out.println(userFacade.getUserByEmail(email).toString());
         return ResponseEntity.ok(userFacade.getUserByEmail(email));
     }
 

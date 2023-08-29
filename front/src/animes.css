@@ -1,0 +1,63 @@
+.animeCoin {
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    padding: 25px;
+  }
+  
+  .animeCoin img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .animeInfo {
+    flex: 1;
+  }
+  
+  .animeTitle {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .animeDescription {
+    font-size: 18px;
+    color: whitesmoke;
+    margin-top: 10px;
+  }
+  
+  .animeLikes,
+  .animeDislikes {
+    font-size: 16px;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .likes-dislikes-line {
+    height: 10px;
+    margin-top: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .likes,
+  .dislikes {
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .likes {
+    background-color: #4caf50; 
+  }
+  
+  .dislikes {
+    background-color: #f44336; 
+  }
+  
