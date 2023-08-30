@@ -14,7 +14,7 @@ const UserProfile = () => {
   const history = useHistory();
   const [editedFirstname, setEditedFirstname] = useState('');
   const [editedLastname, setEditedLastname] = useState('');
-  const [isEditing, setIsEditing] = useState(false); // Track if editing mode is enabled
+  const [isEditing, setIsEditing] = useState(false); 
 
   const handleFirstnameChange = (event) => {
     setEditedFirstname(event.target.value);

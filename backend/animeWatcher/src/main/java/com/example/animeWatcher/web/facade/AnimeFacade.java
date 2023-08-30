@@ -29,9 +29,12 @@ public class AnimeFacade {
     private Random random = new Random();
 
     public AnimeDTORead likeAnime(AnimeDTOReadDescription data, Long id) throws NoSuchFieldException {
-        if(userService.checkLiked(animeToDTOAnimeConverter.convertAnimeDtoDescToAnime(data),id)==false) {
-            return animeToDTOAnimeConverter.convertAnimeToReadDto(
-                    animeService.likeAnime(animeToDTOAnimeConverter.convertAnimeDtoDescToAnime(data)));
+
+        if(userService.checkLiked(animeToDTOAnimeConverter.convertReadDtoToAnime(data.getAnimeDTORead()),id)==false) {
+            AnimeDTORead dto = animeToDTOAnimeConverter.convertAnimeToReadDto(
+                    animeService.likeAnime(animeToDTOAnimeConverter.convertReadDtoToAnime(data.getAnimeDTORead())));
+            userService.makeLike(animeToDTOAnimeConverter.convertReadDtoToAnime(data.getAnimeDTORead()),id);
+            return dto;
         }
         else throw new NoSuchFieldException("Anime already liked");
     }
@@ -73,7 +76,6 @@ public class AnimeFacade {
     public AnimeDTOReadDescription getAnime(Long id){
         AnimeDTOReadDescription animeDTOReadDescription = new AnimeDTOReadDescription();
         animeDTOReadDescription.setAnimeDTORead(animeToDTOAnimeConverter.convertAnimeToReadDto(animeService.getAnime(id)));
-        System.out.println(animeDTOReadDescription);
         return reUpdateAnimeDtoReadDescription(animeDTOReadDescription,descriptionService.getDescriptionByAnimeId(animeDTOReadDescription.getAnimeDTORead().getId()));
     }
 

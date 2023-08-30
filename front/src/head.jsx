@@ -86,6 +86,7 @@ function YourComponent() {
         setNickname(userInfoResponse.data.firstname);
         localStorage.setItem('nickname', nickname);
         localStorage.setItem('id', userId);
+        localStorage.setItem('liked', JSON.stringify(userInfoResponse.data.liked));
       })
       .catch(error => {
         console.error('Failed to fetch user information:', userEmail);

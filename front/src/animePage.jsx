@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import YourComponent from './head.jsx';
 import AnimeDescription from './animeDescription.jsx';
+import axios from 'axios';
 
 import './animePages.css';
 
@@ -9,9 +10,9 @@ const AnimePage = ({ match }) => {
   const [extAnime, setExtAnime] = useState({});
   const [selectedEpisode, setSelectedEpisode] = useState(1);
   const [videoKey, setVideoKey] = useState(1);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
-    console.log("AnimePage компонент перерендерен.");
     const fetchAnime = async () => {
       try {
         const response = await fetch(
@@ -32,6 +33,37 @@ const AnimePage = ({ match }) => {
     setSelectedEpisode(parseInt(event.target.value));
     setVideoKey((prevKey) => prevKey + 1); 
   };
+
+  const handleLikeClick = () => {
+    if (selectedOption === "like") {
+      return;
+    }
+  
+    axios.post(`http://localhost:8080/api/v1/animes/like/${localStorage.getItem("id")}`, anime)
+      .then(response => {
+        console.log("Лайк успешно отправлен!");
+      })
+      .catch(error => {
+        console.error("Ошибка при отправке лайка:", error);
+      });
+
+      
+
+    setSelectedOption("like");
+  };
+  
+  const handleDislikeClick = () => {
+    if (selectedOption === "like") {
+      setSelectedOption(null); 
+    }
+    setSelectedOption("dislike");
+  };
+
+  const likedAnime = JSON.parse(localStorage.getItem("liked")) || [];
+  const isAnimeLiked = likedAnime.includes(match.params.id);
+  const likeButtonClass = isAnimeLiked ? "like-button liked" : "like-button";
+
+  
 
   return (
     <div>
@@ -62,6 +94,16 @@ const AnimePage = ({ match }) => {
                     <dd>{extAnime.dislikes}</dd>
                   </dl>
                 </div>
+
+                <div className="like-dislike-buttons">
+        <button className={likeButtonClass} onClick={handleLikeClick}>
+          Лайк
+        </button>
+        <button className={`${selectedOption === "dislike" ? "dislike-button" : ""}`} onClick={handleDislikeClick}>
+          Дизлайк
+        </button>
+      </div>
+
                 <AnimeDescription longDescription={anime.longDescription} />
 
                 <div className="player-container">

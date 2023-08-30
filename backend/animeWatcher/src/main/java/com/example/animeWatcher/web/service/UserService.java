@@ -80,5 +80,10 @@ public class UserService {
             return true;
         else return false;
     }
+
+    public void makeLike(Anime anime, Long id){
+        User user=getUser(id);
+        user.getLiked().add(anime);
+    }
 }
 

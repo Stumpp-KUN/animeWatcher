@@ -31,6 +31,7 @@ public class AnimeService {
 
     }
 
+    @Transactional
     public Anime likeAnime(Anime anime){
         anime.setLikes(anime.getLikes()+1);
         return animeRepository.save(anime);
